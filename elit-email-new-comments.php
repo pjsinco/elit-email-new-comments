@@ -47,6 +47,7 @@ function elit_email_new_comment( $comment_id, $approval_status ) {
     $recips = array(
       'psinco@osteopathic.org',
       'bjohnson@osteopathic.org',
+      'rraymond@osteopathic.org',
     );
 
     foreach ( $recips as $recip ) {
