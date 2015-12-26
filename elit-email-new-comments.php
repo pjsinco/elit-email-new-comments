@@ -19,7 +19,7 @@ function elit_email_new_comment( $comment_id, $approval_status ) {
     $subject = 'A new comment has been posted on The DO';
 
     $comment = get_comment( $comment_id );
-    $headline = get_post_field( 'post_title', $comment->comment_post_id );
+    $headline = get_post_field( 'post_title', $comment->comment_post_ID );
     $msg = "Mark as spam: " . 
       add_query_arg(
         array(
@@ -36,7 +36,7 @@ function elit_email_new_comment( $comment_id, $approval_status ) {
     $msg .= "Comment:\t" . PHP_EOL;
     $msg .= $comment->comment_content . PHP_EOL . PHP_EOL;
     $msg .= "Story:\t" . $headline . PHP_EOL;
-    $msg .= get_permalink( $comment->comment_post_id );
+    $msg .= get_permalink( $comment->comment_post_ID );
 
     // for testing only
     //$msg .= 'Approval status: ' . $approval_status;
