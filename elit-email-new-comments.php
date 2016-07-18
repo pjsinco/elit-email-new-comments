@@ -15,6 +15,21 @@ function elit_email_new_comment( $comment_id, $approval_status ) {
 
   if ( $approval_status && $approval_status != 'spam' ) {
 
+    $comment = get_comment( $comment_id );
+
+    $blacklisted = wp_blacklist_check(
+      $comment->comment_author,
+      $comment->comment_author_email,
+      $comment->comment_author_url,
+      $comment->comment_content,
+      $comment->comment_author_IP,
+      $comment->comment_agent
+    );
+
+    if ( $blacklisted ) {
+      return;
+    }
+
     // prep contents of email
     $subject = 'A new comment has been posted on The DO';
 
